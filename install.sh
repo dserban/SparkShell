@@ -19,9 +19,12 @@ tar -xf /opt/zzzjdk.tgz -C /opt
 mv /opt/zulu* /opt/jdk
 rm /opt/zzzjdk.tgz
 
+CLOSER="https://www.apache.org/dyn/closer.cgi?as_json=1"
+MIRROR=$(curl --stderr /dev/null ${CLOSER} | jq -r '.preferred')
+
 echo 'Downloading Spark ...'
 wget -qO /opt/zzzspark.tgz \
-         http://apache.javapipe.com/spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz
+         ${MIRROR}spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz
 echo 'Extracting Spark ...'
 tar -xf /opt/zzzspark.tgz -C /opt
 mv /opt/spark-* /opt/spark
@@ -31,7 +34,7 @@ sed 's/INFO/FATAL/;s/WARN/FATAL/;s/ERROR/FATAL/' log4j.properties.template > log
 
 echo 'Downloading Hadoop ...'
 wget -qO /opt/zzzhadoop.tgz \
-         http://apache.javapipe.com/hadoop/common/hadoop-2.7.5/hadoop-2.7.5.tar.gz
+         ${MIRROR}hadoop/common/hadoop-2.7.5/hadoop-2.7.5.tar.gz
 echo 'Extracting Hadoop ...'
 tar -xf /opt/zzzhadoop.tgz -C /opt
 mv /opt/hadoop-* /opt/hadoop
