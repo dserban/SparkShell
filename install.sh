@@ -44,11 +44,20 @@ echo 'Extracting MovieLens File ...'
 cd /opt
 unzip zzzmovielens.zip >/dev/null
 mv ml-20m movielens
+rm /opt/zzzmovielens.zip
 cd /opt/movielens
 mv ratings.csv ratings.csv.orig
 cut -d, -f1-3 /opt/movielens/ratings.csv.orig | tail -n +2 > /opt/movielens/ratings.csv
 mv movies.csv movies.csv.orig
 tail -n +2 movies.csv.orig > movies.csv
+
+echo 'Downloading Scala ...'
+wget -qO /opt/zzzscala.tgz \
+         https://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.tgz
+echo 'Extracting Scala ...'
+tar -xf /opt/zzzscala.tgz -C /opt
+mv /opt/scala-* /opt/scala
+rm /opt/zzzscala.tgz
 
 echo 'Installing sbt ...'
 export SBTV=0.13.15
