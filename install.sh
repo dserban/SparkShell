@@ -12,7 +12,7 @@ locale-gen >/dev/null
 echo -e '\nexport LANG=en_US.UTF-8' >> /root/.bashrc
 
 echo 'Downloading JDK ...'
-wget -qO /opt/zzzjdk.tgz
+wget -qO /opt/zzzjdk.tgz \
          https://cdn.azul.com/zulu/bin/zulu8.28.0.1-jdk8.0.163-linux_x64.tar.gz
 echo 'Extracting JDK ...'
 tar -xf /opt/zzzjdk.tgz -C /opt
@@ -20,7 +20,7 @@ mv /opt/zulu* /opt/jdk
 rm /opt/zzzjdk.tgz
 
 echo 'Downloading Spark ...'
-wget -qO /opt/zzzspark.tgz
+wget -qO /opt/zzzspark.tgz \
          http://apache.javapipe.com/spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz
 echo 'Extracting Spark ...'
 tar -xf /opt/zzzspark.tgz -C /opt
@@ -30,7 +30,7 @@ cd /opt/spark/conf
 sed 's/INFO/FATAL/;s/WARN/FATAL/;s/ERROR/FATAL/' log4j.properties.template > log4j.properties
 
 echo 'Downloading Hadoop ...'
-wget -qO /opt/zzzhadoop.tgz
+wget -qO /opt/zzzhadoop.tgz \
          http://apache.javapipe.com/hadoop/common/hadoop-2.7.5/hadoop-2.7.5.tar.gz
 echo 'Extracting Hadoop ...'
 tar -xf /opt/zzzhadoop.tgz -C /opt
@@ -38,7 +38,7 @@ mv /opt/hadoop-* /opt/hadoop
 rm /opt/zzzhadoop.tgz
 
 echo 'Downloading MovieLens File ...'
-wget -qO /opt/zzzmovielens.zip
+wget -qO /opt/zzzmovielens.zip \
          http://files.grouplens.org/datasets/movielens/ml-20m.zip
 echo 'Extracting MovieLens File ...'
 cd /opt
