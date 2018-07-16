@@ -13,7 +13,7 @@ echo -e '\nexport LANG=en_US.UTF-8' >> /root/.bashrc
 
 echo 'Downloading JDK ...'
 wget -qO /opt/zzzjdk.tgz \
-         https://cdn.azul.com/zulu/bin/zulu8.28.0.1-jdk8.0.163-linux_x64.tar.gz
+         https://cdn.azul.com/zulu/bin/zulu8.30.0.1-jdk8.0.172-linux_x64.tar.gz
 echo 'Extracting JDK ...'
 tar -xf /opt/zzzjdk.tgz -C /opt
 mv /opt/zulu* /opt/jdk
