@@ -78,6 +78,6 @@ mkdir /root/scala/project
 echo "sbt.version=${SBTV}" > /root/scala/project/build.properties
 cd /root/scala
 sbt update > /dev/null
-echo "" | sbt console > /dev/null
+echo '' | sbt console > /dev/null
 
 echo 'Building container, this may take a while ...'
