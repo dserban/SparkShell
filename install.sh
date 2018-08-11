@@ -63,13 +63,15 @@ mv /opt/scala-* /opt/scala
 rm /opt/zzzscala.tgz
 
 echo 'Installing sbt ...'
-export SBTV=0.13.15
-curl -sL http://dl.bintray.com/sbt/native-packages/sbt/${SBTV}/sbt-${SBTV}.tgz | \
-  gzip -d                                                                      | \
-  tar -x -C /usr/local
+export SBTV=1.2.1
+wget -qO /opt/zzzsbt.tgz https://github.com/sbt/sbt/releases/download/v${SBTV}/sbt-${SBTV}.tgz
+tar -xf /opt/zzzsbt.tgz -C /opt
+rm /opt/zzzsbt.tgz
 echo 'Running sbt update ...'
+mkdir /root/scala/project
+echo "sbt.version=${SBTV}" > /root/scala/project/build.properties
 cd /root/scala
-sbt update >/dev/null
-echo "" | sbt console >/dev/null
+sbt update > /dev/null
+echo "" | sbt console > /dev/null
 
 echo 'Building container, this may take a while ...'
