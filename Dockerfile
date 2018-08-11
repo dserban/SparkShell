@@ -14,3 +14,5 @@ COPY install.sh /usr/bin/install.sh
 COPY build.sbt /root/scala/build.sbt
 
 RUN chmod +x /usr/bin/install.sh && bash install.sh
+
+WORKDIR "/root/scala"
