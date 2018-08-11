@@ -67,6 +67,7 @@ echo 'Setting up Ammonite ...'
 export AMMV=1.1.2
 wget -qO /opt/scala/bin/amm https://github.com/lihaoyi/Ammonite/releases/download/${AMMV}/2.11-${AMMV}
 chmod +x /opt/scala/bin/amm
+echo '' | amm &>/dev/null
 
 echo 'Setting up sbt 1.2.1 ...'
 export SBTV=1.2.1
@@ -77,7 +78,7 @@ echo 'Running sbt update ...'
 mkdir /root/scala/project
 echo "sbt.version=${SBTV}" > /root/scala/project/build.properties
 cd /root/scala
-sbt update > /dev/null
-echo '' | sbt console > /dev/null
+sbt update &>/dev/null
+echo '' | sbt console &>/dev/null
 
 echo 'Building container, this may take a while ...'
