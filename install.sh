@@ -57,8 +57,8 @@ cut -d, -f1-3 /opt/movielens/ratings.csv.orig | tail -n +2 > /opt/movielens/rati
 mv movies.csv movies.csv.orig
 tail -n +2 movies.csv.orig > movies.csv
 
-echo 'Setting up Scala 2.11.8 ...'
-wget -qO /opt/tmp/zzzscala.tgz https://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.tgz
+echo 'Setting up Scala 2.11.12 ...'
+wget -qO /opt/tmp/zzzscala.tgz https://downloads.lightbend.com/scala/2.11.12/scala-2.11.12.tgz
 tar -xf /opt/tmp/zzzscala.tgz -C /opt
 mv /opt/scala-* /opt/scala
 rm /opt/tmp/zzzscala.tgz
