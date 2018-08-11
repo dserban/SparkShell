@@ -62,6 +62,11 @@ tar -xf /opt/zzzscala.tgz -C /opt
 mv /opt/scala-* /opt/scala
 rm /opt/zzzscala.tgz
 
+echo 'Setting up Ammonite ...'
+export AMMV=1.1.2
+wget -qO /opt/scala/bin/amm https://github.com/lihaoyi/Ammonite/releases/download/${AMMV}/2.11-${AMMV}
+chmod +x /opt/scala/bin/amm
+
 echo 'Setting up sbt 1.2.1 ...'
 export SBTV=1.2.1
 wget -qO /opt/zzzsbt.tgz https://github.com/sbt/sbt/releases/download/v${SBTV}/sbt-${SBTV}.tgz
