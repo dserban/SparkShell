@@ -11,6 +11,8 @@ echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen
 locale-gen >/dev/null
 echo -e '\nexport LANG=en_US.UTF-8' >> /root/.bashrc
 
+mkdir /opt/tmp
+
 echo 'Setting up the JDK ...'
 JDK_TGZ_URL=$(lynx -dump https://www.azul.com/downloads/zulu/zulu-linux/ | grep -o http.*jdk8.*x64.*gz$ | head -1)
 echo "From ${JDK_TGZ_URL}"
@@ -56,11 +58,11 @@ mv movies.csv movies.csv.orig
 tail -n +2 movies.csv.orig > movies.csv
 
 echo 'Setting up Scala 2.11.8 ...'
-wget -qO /opt/zzzscala.tgz https://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.tgz
+wget -qO /opt/tmp/zzzscala.tgz https://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.tgz
 echo 'Extracting Scala ...'
-tar -xf /opt/zzzscala.tgz -C /opt
+tar -xf /opt/tmp/zzzscala.tgz -C /opt
 mv /opt/scala-* /opt/scala
-rm /opt/zzzscala.tgz
+rm /opt/tmp/zzzscala.tgz
 
 echo 'Setting up Ammonite ...'
 export AMMV=1.1.2
@@ -69,9 +71,9 @@ chmod +x /opt/scala/bin/amm
 
 echo 'Setting up sbt 1.2.1 ...'
 export SBTV=1.2.1
-wget -qO /opt/zzzsbt.tgz https://github.com/sbt/sbt/releases/download/v${SBTV}/sbt-${SBTV}.tgz
-tar -xf /opt/zzzsbt.tgz -C /opt
-rm /opt/zzzsbt.tgz
+wget -qO /opt/tmp/zzzsbt.tgz https://github.com/sbt/sbt/releases/download/v${SBTV}/sbt-${SBTV}.tgz
+tar -xf /opt/tmp/zzzsbt.tgz -C /opt
+rm /opt/tmp/zzzsbt.tgz
 echo 'Running sbt update ...'
 mkdir /root/scala/project
 echo "sbt.version=${SBTV}" > /root/scala/project/build.properties
