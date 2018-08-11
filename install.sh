@@ -59,7 +59,6 @@ tail -n +2 movies.csv.orig > movies.csv
 
 echo 'Setting up Scala 2.11.8 ...'
 wget -qO /opt/tmp/zzzscala.tgz https://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.tgz
-echo 'Extracting Scala ...'
 tar -xf /opt/tmp/zzzscala.tgz -C /opt
 mv /opt/scala-* /opt/scala
 rm /opt/tmp/zzzscala.tgz
