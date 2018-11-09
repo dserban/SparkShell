@@ -69,8 +69,8 @@ wget -qO /opt/scala/bin/amm https://github.com/lihaoyi/Ammonite/releases/downloa
 chmod +x /opt/scala/bin/amm
 amm -c '' &>/dev/null
 
-echo 'Setting up sbt 1.2.1 ...'
-export SBTV=1.2.1
+echo 'Setting up sbt 1.2.6 ...'
+export SBTV=1.2.6
 wget -qO /opt/tmp/zzzsbt.tgz https://github.com/sbt/sbt/releases/download/v${SBTV}/sbt-${SBTV}.tgz
 tar -xf /opt/tmp/zzzsbt.tgz -C /opt
 rm /opt/tmp/zzzsbt.tgz
